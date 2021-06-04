@@ -1,0 +1,33 @@
+name: 'github-repository-naming-convention-action'
+description: 'Create a report of repositories not matching a set naming convention'
+
+inputs:
+  regex:
+    description: A regex string matching correct repo naming conventions.
+    required: true
+  flags:
+    description: Flag for repo naming regex string. e.g. 'i' for case-insensitive
+    required: false
+  token:
+    description: 'A Personal Access token with repo scope'
+    required: true
+  report-path:
+    description: 'Path to the report file'
+    default: 'reports/incorrect-naming-convention-report.csv'
+    required: false
+  committer-name:
+    description: 'The name of the committer that will appear in the Git history'
+    default: 'github-actions'
+    required: false
+  committer-email:
+    description: 'The committer email that will appear in the Git history'
+    default: 'github-actions@github.com'
+    required: false
+
+runs:
+  using: 'node12'
+  main: 'dist/index.js'
+
+branding:
+  icon: file-text
+  color: green
